@@ -26,6 +26,6 @@ class GenericSpider(scrapy.Spider):
         yield {
             'title': response.css('title::text').extract_first(),
             'url': response.url,
-            'canonical': response.css('meta[property="canonical"]::attr(content)').extract_first(),
+            'canonical': response.css('link[rel="canonical"]::attr(href)').extract_first(),
             'og_url': response.css('meta[property="og:url"]::attr(content)').extract_first(),
         }
